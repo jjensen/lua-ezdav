@@ -599,8 +599,10 @@ static HTTP_CONNECTION* ezdav_connection_checkmetatable(lua_State *L, int index)
 
 static int ezdav_connection_attributes(lua_State* L) {
 	HTTP_CONNECTION* connection = ezdav_connection_checkmetatable_internal(L, 1);
-	if (l_ezdav_dir_first(L, connection) == 0)
+	if (l_ezdav_dir_first(L, connection) == 0) {
+		http_exec_set_sys_error(connection, 404);
 		return 0;
+	}
 
 	luaL_getmetatable(L, EZDAV_DIR_METATABLE);
 	lua_setmetatable(L, -2);
