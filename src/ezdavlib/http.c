@@ -1154,7 +1154,7 @@ http_receive_response_entity(HTTP_CONNECTION *connection, HTTP_RESPONSE *respons
 			}
 		}
 	}
-	if (!is_multipart  &&  content_size <= 0)
+	if (!is_multipart  &&  content_size <= 0  &&  !is_chunked)
 	{
 		stage = HTTP_THE_DEVIL_TAKES_IT; /* no content */
 	}
