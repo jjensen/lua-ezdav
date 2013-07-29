@@ -24,6 +24,7 @@ typedef int SOCKET;
 #include <limits.h>
 #define close	closesocket
 #else
+#include <unistd.h>
 #include <sys/socket.h>
 #include <resolv.h>
 #include <netdb.h>
